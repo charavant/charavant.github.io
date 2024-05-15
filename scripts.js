@@ -6,17 +6,19 @@ document.getElementById('startButton').addEventListener('click', () => {
 });
 
 function processText(text, replaceType) {
-    // For simplicity, we will use only one replaceType for now.
-    // In the future, you can add different replaceType handling as needed.
-    if (replaceType === "1") {
-        return transformIframe(text);
-    } else {
-        // Placeholder for other types
-        return "Other replace types not implemented yet.";
+    switch (replaceType) {
+        case "Songs":
+            return transformIframe(text, "Songs");
+        case "Story":
+            return transformIframe(text, "Story");
+        case "PendingCategory":
+            return transformIframe(text, "PendingCategory");
+        default:
+            return "Invalid replace type selected.";
     }
 }
 
-function transformIframe(htmlContent) {
+function transformIframe(htmlContent, type) {
     const pattern = /<iframe[^>]*src=["']([^"']*)["'][^>]*>/;
     const match = htmlContent.match(pattern);
 
@@ -26,7 +28,20 @@ function transformIframe(htmlContent) {
         if (colorIndex !== -1) {
             src = src.substring(0, colorIndex);
         }
-        const newParameters = "&color=%23ff5500&inverse=false&auto_play=false&show_user=false";
+        let newParameters;
+        switch (type) {
+            case "Songs":
+                newParameters = "&color=%23ff5500&inverse=false&auto_play=false&show_user=false";
+                break;
+            case "Story":
+                newParameters = "&color=%2300ff00&inverse=true&auto_play=true&show_user=true";
+                break;
+            case "PendingCategory":
+                newParameters = "&color=%230000ff&inverse=false&auto_play=true&show_user=false";
+                break;
+            default:
+                newParameters = "";
+        }
         const newSrc = `${src}${newParameters}`;
         return `<iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="${newSrc}"></iframe>`;
     } else {
