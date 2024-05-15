@@ -3,32 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects</title>
+    <title>Soundcloud Link Replacer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>My GitHub Projects</h1>
-    </header>
-    <section class="parallax bg1">
-        <div class="content">
-            <h2>Project 1</h2>
-            <p>Description of Project 1.</p>
-            <a href="https://github.com/yourusername/project1">View on GitHub</a>
-        </div>
-    </section>
-    <section class="parallax bg2">
-        <div class="content">
-            <h2>Project 2</h2>
-            <p>Description of Project 2.</p>
-            <a href="https://github.com/yourusername/project2">View on GitHub</a>
-        </div>
-    </section>
-    <!-- Add more projects as needed -->
-    <footer>
-        <h2>About Me</h2>
-        <p>Your personal info goes here. Add links to your LinkedIn, Twitter, etc.</p>
-    </footer>
-    <script src="scripts.js"></script>
+    <div class="container">
+        <h1>Soundcloud Link Replacer</h1>
+        <textarea id="inputText" placeholder="Paste your text here..."></textarea>
+        <button id="startButton">Start</button>
+        <select id="replaceType">
+            <option value="1">Type 1</option>
+            <option value="2">Type 2</option>
+            <option value="3">Type 3</option>
+        </select>
+        <textarea id="outputText" readonly placeholder="Processed text will appear here..."></textarea>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
